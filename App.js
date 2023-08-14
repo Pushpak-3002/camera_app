@@ -2,7 +2,7 @@ import React , {useState, useEffect, useRef} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {Camera, camera , cameraType} from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
-import { useState } from 'react';
+import Button from './src/components/Button';
 export default function App() {
   const [HasCameraPermission, setHasCameraPermission] = useState(null);
   const [image, setImage]= useState(null);
@@ -18,12 +18,16 @@ export default function App() {
   },[])
   return (
     <View style={styles.container}>
-    <Camera>
+    <Camera
       style={styles.camera}
       type={type}
       flashMode={flash}
-      ref={CameraRef}
+      ref={CameraRef}>
+    <Text>Hello</Text>
     </Camera>
+    <View>
+      <Button title={'Shot On Iphone'} icon="camera"/>
+    </View>
     </View>
   );
 }
@@ -32,7 +36,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
   },
+  camera: {
+    flex:1,
+    borderRadius:20,
+
+  }
 });
